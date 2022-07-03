@@ -1,0 +1,48 @@
+{
+  "name": "FlashListTV",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "postinstall": "patch-package",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
+    "tvos": "react-native run-ios --scheme='FlashListTV-tvOS' --simulator='Apple TV'",
+    "start": "react-native start",
+    "test": "jest",
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+  },
+  "dependencies": {
+    "@react-navigation/native": "^6.0.10",
+    "@react-navigation/stack": "^6.2.1",
+    "@shopify/flash-list": "^1.0.4",
+    "@types/react": "^18.0.14",
+    "@types/react-native": "^0.69.1",
+    "react": "17.0.2",
+    "react-native": "npm:react-native-tvos@0.68.2-2",
+    "react-native-fast-image": "^8.5.11",
+    "react-native-gesture-handler": "^2.5.0",
+    "react-native-reanimated": "2.8.0",
+    "react-native-safe-area-context": "4.2.4",
+    "react-native-screens": "3.13.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@babel/runtime": "^7.12.5",
+    "@react-native-community/eslint-config": "^2.0.0",
+    "@types/jest": "^28.1.4",
+    "@types/pixelmatch": "^5.2.4",
+    "@types/pngjs": "^6.0.1",
+    "babel-jest": "^26.6.3",
+    "babel-plugin-module-resolver": "^4.1.0",
+    "eslint": "^7.32.0",
+    "jest": "^26.6.3",
+    "metro-react-native-babel-preset": "^0.67.0",
+    "patch-package": "^6.4.7",
+    "pngjs": "^6.0.0",
+    "react-test-renderer": "17.0.2",
+    "typescript": "^4.7.4"
+  },
+  "jest": {
+    "preset": "react-native"
+  }
+}
