@@ -1,5 +1,10 @@
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {useColorScheme} from 'react-native';
+import {
+  NavigationContainer,
+  DarkTheme,
+  DefaultTheme,
+} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 
 import Reminders from './Reminders';
@@ -18,8 +23,10 @@ import TwitterCustomCellContainer from './twitter/CustomCellRendererComponent';
 const Stack = createStackNavigator<RootStackParamList>();
 
 const NavigationTree = () => {
+  const colorScheme = useColorScheme();
+  const theme = colorScheme === 'dark' ? DarkTheme : DefaultTheme;
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={theme}>
       <Stack.Navigator>
         <Stack.Group>
           <Stack.Screen name="Examples" component={ExamplesScreen} />

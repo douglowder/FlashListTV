@@ -1,16 +1,20 @@
-import React, { useContext } from "react";
-import { View, Text, StyleSheet, Switch } from "react-native";
-import { FlashList } from "@shopify/flash-list";
-import { TextInput } from "react-native-gesture-handler";
+import React, {useContext} from 'react';
+import {View, Text, StyleSheet, Switch} from 'react-native';
+import {FlashList} from '@shopify/flash-list';
+import {TextInput} from 'react-native-gesture-handler';
+import {useTheme} from '@react-navigation/native';
 
-import { DebugContext, DebugContextInterface } from "./DebugContext";
-import { getDebugItems, DebugItem, DebugOptionType } from "./DebugOptions";
+import {DebugContext, DebugContextInterface} from './DebugContext';
+import {getDebugItems, DebugItem, DebugOptionType} from './DebugOptions';
 
 const DebugScreen = () => {
   const debugContext = useContext<DebugContextInterface>(DebugContext);
   const debugItems = getDebugItems(debugContext);
+  const {colors} = useTheme();
 
-  const renderItem = ({ item }: { item: DebugItem }) => {
+  const styles = themedStyles(colors);
+
+  const renderItem = ({item}: {item: DebugItem}) => {
     return (
       <View style={styles.row}>
         <Text style={styles.rowTitle}>{item.name}</Text>
@@ -33,6 +37,8 @@ const DebugScreen = () => {
 };
 
 const Divider = () => {
+  const {colors} = useTheme();
+  const styles = themedStyles(colors);
   return <View style={styles.divider} />;
 };
 
@@ -40,7 +46,7 @@ const renderInput = (item: DebugItem) => {
   if (item.type === DebugOptionType.Switch) {
     return (
       <Switch
-        onValueChange={(value) => {
+        onValueChange={value => {
           item.onValue(value);
         }}
         value={item.value}
@@ -50,7 +56,7 @@ const renderInput = (item: DebugItem) => {
   } else if (item.type === DebugOptionType.Input) {
     return (
       <TextInput
-        onChangeText={(value) => {
+        onChangeText={value => {
           item.onValue(Number(value));
         }}
         placeholder="Set value"
@@ -63,23 +69,25 @@ const renderInput = (item: DebugItem) => {
 
 export default DebugScreen;
 
-const styles = StyleSheet.create({
-  row: {
-    flex: 1,
-    backgroundColor: "#FFF",
-    height: 44,
-    paddingLeft: 16,
-    paddingRight: 16,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-  },
-  rowTitle: {
-    fontSize: 18,
-  },
-  divider: {
-    width: "100%",
-    height: StyleSheet.hairlineWidth,
-    backgroundColor: "#DDD",
-  },
-});
+const themedStyles = colors =>
+  StyleSheet.create({
+    row: {
+      flex: 1,
+      backgroundColor: colors.card,
+      height: 44,
+      paddingLeft: 16,
+      paddingRight: 16,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+    },
+    rowTitle: {
+      fontSize: 18,
+      color: colors.primary,
+    },
+    divider: {
+      width: '100%',
+      height: StyleSheet.hairlineWidth,
+      backgroundColor: colors.border,
+    },
+  });

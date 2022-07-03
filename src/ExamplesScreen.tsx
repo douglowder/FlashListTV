@@ -8,7 +8,7 @@ import {
   Pressable,
 } from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
-import {useNavigation} from '@react-navigation/native';
+import {useNavigation, useTheme} from '@react-navigation/native';
 
 import {DebugButton} from './Debug';
 import {RootStackParamList} from './constants';
@@ -28,6 +28,26 @@ export const ExamplesScreen = () => {
   const onDebugButton = () => {
     navigate('Debug');
   };
+
+  const {colors} = useTheme();
+
+  const styles = StyleSheet.create({
+    row: {
+      padding: 16,
+      backgroundColor: colors.card,
+      borderBottomWidth: 1,
+      borderBottomColor: colors.border,
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+    },
+    rowHighlighted: {
+      backgroundColor: colors.border,
+    },
+    rowTitle: {
+      fontSize: 18,
+      color: colors.primary,
+    },
+  });
 
   const data: ExampleItem[] = [
     {title: 'List', destination: 'List', tv: true},
@@ -92,20 +112,3 @@ export const ExamplesScreen = () => {
     </>
   );
 };
-
-const styles = StyleSheet.create({
-  row: {
-    padding: 16,
-    backgroundColor: '#FFF',
-    borderBottomWidth: 1,
-    borderBottomColor: '#EFEFEF',
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  rowHighlighted: {
-    backgroundColor: '#ddd',
-  },
-  rowTitle: {
-    fontSize: 18,
-  },
-});
