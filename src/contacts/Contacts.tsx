@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
-import { FlashList } from "@shopify/flash-list";
+import React, {useContext, useEffect, useState} from 'react';
+import {FlashList} from '@shopify/flash-list';
 
-import { DebugContext } from "../Debug";
+import {DebugContext} from '../Debug';
 
-import Contact from "./models/Contact";
-import contacts from "./data/contacts";
-import ContactCell from "./ContactCell";
-import ContactSectionHeader from "./ContactSectionHeader";
-import ContactHeader from "./ContactHeader";
-import ContactDivider from "./ContactDivider";
+import Contact from './models/Contact';
+import contacts from './data/contacts';
+import ContactCell from './ContactCell';
+import ContactSectionHeader from './ContactSectionHeader';
+import ContactHeader from './ContactHeader';
+import ContactDivider from './ContactDivider';
 
 const Contacts = () => {
   const debugContext = useContext(DebugContext);
@@ -24,7 +24,7 @@ const Contacts = () => {
 
   const stickyHeaderIndices = data
     .map((item, index) => {
-      if (typeof item === "string") {
+      if (typeof item === 'string') {
         return index;
       } else {
         return null;
@@ -37,15 +37,15 @@ const Contacts = () => {
       testID="FlashList"
       estimatedItemSize={44}
       data={data}
-      renderItem={({ item }) => {
-        if (typeof item === "string") {
+      renderItem={({item}) => {
+        if (typeof item === 'string') {
           return <ContactSectionHeader title={item} />;
         } else {
           return <ContactCell contact={item as Contact} />;
         }
       }}
       getItemType={(item) => {
-        return typeof item === "string" ? "sectionHeader" : "row";
+        return typeof item === 'string' ? 'sectionHeader' : 'row';
       }}
       ItemSeparatorComponent={ContactDivider}
       stickyHeaderIndices={stickyHeaderIndices}

@@ -30,11 +30,13 @@ export const CustomCellRendererComponent = React.forwardRef((props: any, _) => {
     cellContainerRef.current?.setNativeProps({opacity: 1});
   });
 
+  const transparentStyle = {opacity: 0};
+
   return (
     <AnimatedCellContainer
       ref={cellContainerRef}
       {...props}
-      style={[animatedStyles, {opacity: 0}, props.style]}
+      style={[animatedStyles, transparentStyle, props.style]}
     />
   );
 });

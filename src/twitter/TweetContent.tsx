@@ -1,9 +1,9 @@
-import React from "react";
-import { StyleSheet, View, Image, Text, ViewStyle } from "react-native";
-import FastImage from "react-native-fast-image";
+import React from 'react';
+import {StyleSheet, View, Image, Text, ViewStyle} from 'react-native';
+import FastImage from 'react-native-fast-image';
 
-import Author from "./models/Author";
-import Tweet from "./models/Tweet";
+import Author from './models/Author';
+import Tweet from './models/Tweet';
 
 export interface TweetContentProps {
   tweet: Tweet;
@@ -12,39 +12,39 @@ export interface TweetContentProps {
 const tweetActions = (
   retweets: React.ReactNode,
   comments: React.ReactNode,
-  likes: React.ReactNode
+  likes: React.ReactNode,
 ) => {
   return (
     <View style={[styles.rowActions, styles.actionBar]}>
       <View style={styles.elemAction}>
         <Image
           style={styles.actionButton}
-          source={require("assets/comment.png")}
+          source={require('assets/comment.png')}
         />
         <Text style={styles.actionText}>{comments}</Text>
       </View>
       <View style={styles.elemAction}>
         <Image
           style={styles.actionButton}
-          source={require("assets/retweet.png")}
+          source={require('assets/retweet.png')}
         />
         <Text style={styles.actionText}>{retweets}</Text>
       </View>
       <View style={styles.elemAction}>
         <Image
           style={styles.actionButton}
-          source={require("assets/like.png")}
+          source={require('assets/like.png')}
         />
         <Text style={styles.actionText}>{likes}</Text>
       </View>
-      <Image style={styles.actionButton} source={require("assets/share.png")} />
+      <Image style={styles.actionButton} source={require('assets/share.png')} />
     </View>
   );
 };
 
 const avatar = (author: Author) => {
-  const imageUrl = author.avatar.replace("_normal", "");
-  return <FastImage style={styles.avatar} source={{ uri: imageUrl }} />;
+  const imageUrl = author.avatar.replace('_normal', '');
+  return <FastImage style={styles.avatar} source={{uri: imageUrl}} />;
 };
 interface GrayTextProps {
   children: React.ReactNode;
@@ -52,7 +52,7 @@ interface GrayTextProps {
   style?: ViewStyle;
 }
 
-const GrayText = ({ children, numberOfLines, style }: GrayTextProps) => {
+const GrayText = ({children, numberOfLines, style}: GrayTextProps) => {
   return (
     <Text style={[style, styles.gray]} numberOfLines={numberOfLines}>
       {children}
@@ -60,7 +60,7 @@ const GrayText = ({ children, numberOfLines, style }: GrayTextProps) => {
   );
 };
 
-const TweetContent = ({ tweet }: TweetContentProps) => {
+const TweetContent = ({tweet}: TweetContentProps) => {
   return (
     <View style={styles.singleItem}>
       <View style={styles.row}>
@@ -81,7 +81,7 @@ const TweetContent = ({ tweet }: TweetContentProps) => {
             {tweetActions(
               tweet.retweetCount,
               tweet.replyCount,
-              tweet.favoriteCount
+              tweet.favoriteCount,
             )}
           </View>
         </View>
@@ -96,7 +96,7 @@ const styles = StyleSheet.create({
   },
   actionBar: {
     marginTop: 8,
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
     marginRight: 16,
   },
   actionButton: {
@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
     marginRight: 8,
   },
   gray: {
-    color: "#777",
+    color: '#777',
     fontSize: 13,
     paddingRight: 2,
   },
@@ -119,41 +119,41 @@ const styles = StyleSheet.create({
   },
   header: {
     fontSize: 14,
-    fontWeight: "bold",
+    fontWeight: 'bold',
     paddingBottom: 4,
     paddingRight: 4,
-    color: "#000",
+    color: '#000',
   },
   description: {
     fontSize: 14,
-    color: "#000",
+    color: '#000',
   },
   singleItem: {
     paddingHorizontal: 16,
     minHeight: 44,
     flex: 1,
     padding: 16,
-    backgroundColor: "#FFF",
+    backgroundColor: '#FFF',
   },
   rowTop: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   rowActions: {
     flexGrow: 1,
-    justifyContent: "space-between",
-    flexDirection: "row",
+    justifyContent: 'space-between',
+    flexDirection: 'row',
   },
   row: {
-    flexDirection: "row",
+    flexDirection: 'row',
   },
   elemAction: {
-    flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "flex-start",
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
   },
   actionText: {
     fontSize: 12,
-    color: "#444",
+    color: '#444',
   },
   tweetContentContainer: {
     flexShrink: 1,

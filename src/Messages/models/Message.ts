@@ -1,4 +1,4 @@
-import MessageType from "./MessageType";
+import MessageType from './MessageType';
 
 export interface TextMessage {
   id: string;
@@ -18,4 +18,5 @@ export interface ImageMessage {
 
 type Message = ImageMessage | TextMessage;
 
+// eslint-disable-next-line no-undef
 export default Message;

@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react';
 
-import Message from "./models/Message";
-import ImageMessage from "./ImageMessage";
-import TextBubble from "./TextBubble";
-import userName from "./userName";
-import MessageType from "./models/MessageType";
+import Message from './models/Message';
+import ImageMessage from './ImageMessage';
+import TextBubble from './TextBubble';
+import userName from './userName';
+import MessageType from './models/MessageType';
 
-const MessageItem = ({ item }: { item: Message }) => {
+const MessageItem = ({item}: {item: Message}) => {
   const mine = item.sender === userName;
   switch (item.type) {
     case MessageType.Text:

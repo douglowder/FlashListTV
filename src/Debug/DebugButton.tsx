@@ -1,5 +1,5 @@
-import React from "react";
-import { Button, StyleSheet, View } from "react-native";
+import React from 'react';
+import {Button, StyleSheet, View} from 'react-native';
 
 export interface DebugButtonProps {
   onPress: () => void;
@@ -22,10 +22,10 @@ export default DebugButton;
 
 const styles = StyleSheet.create({
   pressableStyle: {
-    position: "absolute",
+    position: 'absolute',
 
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     right: 30,
     bottom: 30,
   },

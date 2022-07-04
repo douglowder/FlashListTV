@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { View, StyleSheet, Image, TextInput, Pressable } from "react-native";
+import React, {useState} from 'react';
+import {View, StyleSheet, Image, TextInput, Pressable} from 'react-native';
 
 interface TextInputBarProps {
   onSend: (text: string) => void;
 }
 
-const TextInputBar = ({ onSend }: TextInputBarProps) => {
-  const [text, setText] = useState("");
+const TextInputBar = ({onSend}: TextInputBarProps) => {
+  const [text, setText] = useState('');
 
   return (
     <View style={styles.textInputBar}>
@@ -24,15 +24,15 @@ const TextInputBar = ({ onSend }: TextInputBarProps) => {
             return;
           }
           onSend(text);
-          setText("");
+          setText('');
         }}
       >
         <Image
           style={[
             styles.sendButton,
-            text.length < 1 ? { opacity: 0.3 } : { opacity: 1 },
+            text.length < 1 ? styles.textOpacity3 : styles.textOpacity10,
           ]}
-          source={require("assets/send.png")}
+          source={require('assets/send.png')}
         />
       </Pressable>
     </View>
@@ -40,14 +40,20 @@ const TextInputBar = ({ onSend }: TextInputBarProps) => {
 };
 
 const styles = StyleSheet.create({
+  textOpacity3: {
+    opacity: 0.3,
+  },
+  textOpacity10: {
+    opacity: 1.0,
+  },
   textInputBar: {
-    width: "100%",
-    flexDirection: "row",
+    width: '100%',
+    flexDirection: 'row',
     flexGrow: 0,
   },
   textInput: {
     borderRadius: 20,
-    borderColor: "#ddd",
+    borderColor: '#ddd',
     borderWidth: 0.5,
     paddingHorizontal: 16,
     fontSize: 16,
@@ -56,10 +62,10 @@ const styles = StyleSheet.create({
     paddingTop: 8,
     paddingRight: 40,
     flexGrow: 0,
-    minWidth: "95%",
+    minWidth: '95%',
   },
   sendButtonWrapper: {
-    position: "absolute",
+    position: 'absolute',
     bottom: -4,
     right: 0,
     width: 44,

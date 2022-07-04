@@ -1,16 +1,16 @@
-import React from "react";
-import { StyleSheet } from "react-native";
-import FastImage from "react-native-fast-image";
+import React from 'react';
+import {StyleSheet} from 'react-native';
+import FastImage from 'react-native-fast-image';
 
 interface AvatarProps {
   avatar?: string;
 }
 
-const Avatar = ({ avatar }: AvatarProps) => {
+const Avatar = ({avatar}: AvatarProps) => {
   if (avatar === undefined) {
     return null;
   }
-  return <FastImage style={styles.avatar} source={{ uri: avatar }} />;
+  return <FastImage style={styles.avatar} source={{uri: avatar}} />;
 };
 
 export default Avatar;

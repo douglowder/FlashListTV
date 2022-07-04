@@ -1,5 +1,5 @@
 import React, {useContext} from 'react';
-import {FlatList, View} from 'react-native';
+import {FlatList, StyleSheet, View} from 'react-native';
 
 import {DebugContext} from '../Debug';
 import useBackNavigation from '../useBackNavigation';
@@ -12,17 +12,17 @@ const TwitterFlatList = ({navigation}: {navigation: any}) => {
   const debugContext = useContext(DebugContext);
   useBackNavigation(navigation);
   return (
-    <View style={{flex: 1}}>
+    <View style={styles.container}>
       <FlatList
         testID="FlatList"
-        keyExtractor={item => {
+        keyExtractor={(item) => {
           return item.id;
         }}
         renderItem={({item}) => {
           return <TweetCell tweet={item} />;
         }}
         ListHeaderComponent={Header}
-        ListHeaderComponentStyle={{backgroundColor: '#ccc'}}
+        ListHeaderComponentStyle={styles.header}
         ListFooterComponent={Footer}
         ItemSeparatorComponent={Divider}
         ListEmptyComponent={Empty()}
@@ -33,12 +33,21 @@ const TwitterFlatList = ({navigation}: {navigation: any}) => {
           itemVisiblePercentThreshold: 50,
           minimumViewTime: 1000,
         }}
-        onViewableItemsChanged={info => {
+        onViewableItemsChanged={(info) => {
           console.log(info);
         }}
       />
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  header: {
+    backgroundColor: '#ccc',
+  },
+});
 
 export default TwitterFlatList;

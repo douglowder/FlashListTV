@@ -1,13 +1,13 @@
-import { KeyboardAvoidingView, Platform, StyleSheet } from "react-native";
-import { FlashList } from "@shopify/flash-list";
-import React, { useState } from "react";
+import {KeyboardAvoidingView, Platform, StyleSheet} from 'react-native';
+import {FlashList} from '@shopify/flash-list';
+import React, {useState} from 'react';
 
-import MessageType from "./models/MessageType";
-import initialMessages from "./data/messages";
-import TextInputBar from "./TextInputBar";
-import userName from "./userName";
-import MessageItem from "./MessageItem";
-import Message from "./models/Message";
+import MessageType from './models/MessageType';
+import initialMessages from './data/messages';
+import TextInputBar from './TextInputBar';
+import userName from './userName';
+import MessageItem from './MessageItem';
+import Message from './models/Message';
 
 const Messages = () => {
   const [messages, setMessages] = useState(initialMessages);
@@ -24,7 +24,7 @@ const Messages = () => {
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       keyboardVerticalOffset={100}
       style={styles.keyboardAvoidingViewStyles}
     >
@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   keyboardAvoidingViewStyles: {
     flex: 1,
     marginBottom: 40,
-    backgroundColor: "white",
+    backgroundColor: 'white',
   },
 });
 

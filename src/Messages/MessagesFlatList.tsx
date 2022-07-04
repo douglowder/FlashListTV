@@ -3,15 +3,15 @@ import {
   StyleSheet,
   FlatList,
   Platform,
-} from "react-native";
-import React, { useState } from "react";
+} from 'react-native';
+import React, {useState} from 'react';
 
-import MessageType from "./models/MessageType";
-import initialMessages from "./data/messages";
-import TextInputBar from "./TextInputBar";
-import userName from "./userName";
-import MessageItem from "./MessageItem";
-import Message from "./models/Message";
+import MessageType from './models/MessageType';
+import initialMessages from './data/messages';
+import TextInputBar from './TextInputBar';
+import userName from './userName';
+import MessageItem from './MessageItem';
+import Message from './models/Message';
 
 const MessagesFlatList = () => {
   const [messages, setMessages] = useState(initialMessages);
@@ -29,7 +29,7 @@ const MessagesFlatList = () => {
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : undefined}
+      behavior={Platform.OS === 'ios' ? 'padding' : undefined}
       keyboardVerticalOffset={100}
       style={styles.keyboardAvoidingViewStyles}
     >
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
   keyboardAvoidingViewStyles: {
     flex: 1,
     marginBottom: 40,
-    backgroundColor: "white",
+    backgroundColor: 'white',
   },
   list: {
     flex: 1,

@@ -49,7 +49,7 @@ const Twitter = ({
       ref={instance}
       onBlankArea={blankAreaTracker}
       testID="FlashList"
-      keyExtractor={item => {
+      keyExtractor={(item) => {
         return item.id;
       }}
       renderItem={({item}) => {
@@ -75,7 +75,7 @@ const Twitter = ({
         }, 1000);
       }}
       ListHeaderComponent={Header}
-      ListHeaderComponentStyle={{backgroundColor: '#ccc'}}
+      ListHeaderComponentStyle={styles.listHeader}
       ListFooterComponent={() => {
         return (
           <Footer
@@ -90,7 +90,7 @@ const Twitter = ({
       data={debugContext.emptyListEnabled ? [] : tweets}
       initialScrollIndex={debugContext.initialScrollIndex}
       viewabilityConfig={viewabilityConfig}
-      onViewableItemsChanged={info => {
+      onViewableItemsChanged={(info) => {
         console.log(info);
       }}
       disableAutoLayout={disableAutoLayout}
@@ -150,6 +150,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#1DA1F2',
+  },
+  listHeader: {
+    backgroundColor: '#ccc',
   },
   footer: {
     height: 40,

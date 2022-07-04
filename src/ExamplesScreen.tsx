@@ -92,7 +92,7 @@ export const ExamplesScreen = () => {
       <FlatList
         testID="ExamplesFlatList"
         keyExtractor={(item: {destination: any}) => item.destination}
-        data={data.filter(item => item.tv || !Platform.isTV)}
+        data={data.filter((item) => item.tv || !Platform.isTV)}
         renderItem={(x: {item: any}) => (
           <Pressable
             style={(s: {pressed: boolean; focused: boolean}) =>
@@ -103,7 +103,8 @@ export const ExamplesScreen = () => {
             onPress={() => {
               navigate(x.item.destination);
             }}
-            testID={x.item.title}>
+            testID={x.item.title}
+          >
             <Text style={styles.rowTitle}>{x.item.title}</Text>
           </Pressable>
         )}

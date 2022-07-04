@@ -1,7 +1,7 @@
-import React from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import React from 'react';
+import {View, Text, StyleSheet, Image} from 'react-native';
 
-import Avatar from "./Avatar";
+import Avatar from './Avatar';
 
 interface TextBubbleProps {
   text: string;
@@ -10,7 +10,7 @@ interface TextBubbleProps {
   name: string;
 }
 
-const TextBubble = ({ text, mine, avatar, name }: TextBubbleProps) => {
+const TextBubble = ({text, mine, avatar, name}: TextBubbleProps) => {
   return (
     <View style={mine ? {} : styles.otherBubbleWrapper}>
       <Avatar avatar={mine ? undefined : avatar} />
@@ -23,7 +23,7 @@ const TextBubble = ({ text, mine, avatar, name }: TextBubbleProps) => {
       <Image
         style={mine ? styles.mineArrow : styles.otherArrow}
         source={
-          mine ? require("assets/arrow.png") : require("assets/arrowOther.png")
+          mine ? require('assets/arrow.png') : require('assets/arrowOther.png')
         }
       />
     </View>
@@ -32,60 +32,60 @@ const TextBubble = ({ text, mine, avatar, name }: TextBubbleProps) => {
 
 const styles = StyleSheet.create({
   otherBubbleWrapper: {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "flex-end",
+    display: 'flex',
+    flexDirection: 'row',
+    alignItems: 'flex-end',
   },
   mineInfo: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "flex-end",
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
   },
   otherInfo: {
-    display: "flex",
+    display: 'flex',
   },
   name: {
-    color: "#666",
-    fontWeight: "400",
+    color: '#666',
+    fontWeight: '400',
     fontSize: 13,
     marginLeft: 8,
     marginBottom: 0,
   },
   none: {
-    display: "none",
+    display: 'none',
     width: 0,
   },
   mineBubble: {
-    backgroundColor: "#077FFF",
-    color: "#FFF",
+    backgroundColor: '#077FFF',
+    color: '#FFF',
     borderRadius: 16,
-    borderColor: "#fff",
+    borderColor: '#fff',
     margin: 8,
     padding: 12,
-    overflow: "hidden",
+    overflow: 'hidden',
     marginLeft: 60,
     marginRight: 15,
   },
   otherBubble: {
     marginRight: 60,
-    backgroundColor: "#E9E9EA",
-    color: "#000",
+    backgroundColor: '#E9E9EA',
+    color: '#000',
     borderRadius: 16,
-    borderColor: "#fff",
+    borderColor: '#fff',
     margin: 8,
     marginTop: 4,
     padding: 12,
-    overflow: "hidden",
+    overflow: 'hidden',
   },
   mineArrow: {
-    position: "absolute",
+    position: 'absolute',
     right: 9,
     bottom: 7,
     width: 21,
     height: 16,
   },
   otherArrow: {
-    position: "absolute",
+    position: 'absolute',
     left: 44,
     bottom: 7,
     width: 21,

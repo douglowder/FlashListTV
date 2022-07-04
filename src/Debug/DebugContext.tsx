@@ -1,5 +1,5 @@
-import React, { useState, createContext, useMemo } from "react";
-import type { ReactNode } from "react";
+import React, {useState, createContext, useMemo} from 'react';
+import type {ReactNode} from 'react';
 
 export interface DebugContextInterface {
   emptyListEnabled: boolean;
@@ -19,14 +19,14 @@ const DebugContextDefaultValue = {
 };
 
 export const DebugContext = createContext<DebugContextInterface>(
-  DebugContextDefaultValue
+  DebugContextDefaultValue,
 );
 
 interface DebugContextProviderProps {
   children: ReactNode;
 }
 
-const DebugContextProvider = ({ children }: DebugContextProviderProps) => {
+const DebugContextProvider = ({children}: DebugContextProviderProps) => {
   const [emptyListEnabled, setEmptyListEnabled] = useState(false);
   const [initialScrollIndex, setInitialScrollIndex] = useState<
     number | undefined
@@ -49,7 +49,7 @@ const DebugContextProvider = ({ children }: DebugContextProviderProps) => {
       setInitialScrollIndex,
       pagingEnabled,
       setPagingEnabled,
-    ]
+    ],
   );
 
   return (

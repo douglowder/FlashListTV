@@ -48,7 +48,7 @@ const renderInput = (item: DebugItem) => {
   if (item.type === DebugOptionType.Switch) {
     return (
       <Switch
-        onValueChange={value => {
+        onValueChange={(value) => {
           item.onValue(value);
         }}
         value={item.value}
@@ -58,7 +58,7 @@ const renderInput = (item: DebugItem) => {
   } else if (item.type === DebugOptionType.Input) {
     return (
       <TextInput
-        onChangeText={value => {
+        onChangeText={(value) => {
           item.onValue(Number(value));
         }}
         placeholder="Set value"

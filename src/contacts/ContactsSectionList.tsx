@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
-import { SectionList } from "react-native";
+import React, {useContext, useEffect, useState} from 'react';
+import {SectionList} from 'react-native';
 
-import { DebugContext } from "../Debug";
+import {DebugContext} from '../Debug';
 
-import Contact from "./models/Contact";
-import ContactSectionHeader from "./ContactSectionHeader";
-import ContactDivider from "./ContactDivider";
-import ContactCell from "./ContactCell";
-import contacts from "./data/contacts";
-import ContactHeader from "./ContactHeader";
+import Contact from './models/Contact';
+import ContactSectionHeader from './ContactSectionHeader';
+import ContactDivider from './ContactDivider';
+import ContactCell from './ContactCell';
+import contacts from './data/contacts';
+import ContactHeader from './ContactHeader';
 
 interface Section {
   title: string;
@@ -27,7 +27,7 @@ const ContactsSectionList = () => {
         } as Section;
       })
       .sort((aSection, bSection) =>
-        aSection.title.localeCompare(bSection.title)
+        aSection.title.localeCompare(bSection.title),
       );
     setData(sectionedContacts);
   }, []);
@@ -35,9 +35,9 @@ const ContactsSectionList = () => {
   return (
     <SectionList
       testID="SectionList"
-      keyExtractor={({ firstName, lastName }) => firstName + lastName}
-      renderItem={({ item }) => <ContactCell contact={item} />}
-      renderSectionHeader={({ section: { title } }) => (
+      keyExtractor={({firstName, lastName}) => firstName + lastName}
+      renderItem={({item}) => <ContactCell contact={item} />}
+      renderSectionHeader={({section: {title}}) => (
         <ContactSectionHeader title={title} />
       )}
       ItemSeparatorComponent={ContactDivider}

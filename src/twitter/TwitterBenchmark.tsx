@@ -6,7 +6,7 @@ import Tweet from './models/Tweet';
 
 const TwitterBenchmark = ({navigation}: {navigation: any}) => {
   const ref = useRef<FlashList<Tweet>>(null);
-  const [blankAreaTracker] = useBenchmark(ref, res => {
+  const [blankAreaTracker] = useBenchmark(ref, (res) => {
     if (!res.interrupted) {
       // eslint-disable-next-line no-alert
       alert(res.formattedString);

@@ -67,7 +67,8 @@ const ReminderCell = ({
       onLayout={onLayout}
       style={styles.cell}
       layout={Layout}
-      exiting={FadeOut}>
+      exiting={FadeOut}
+    >
       <View style={styles.checkbox}>
         <Pressable onPress={toggle}>
           <Checkbox checked={checked} />
@@ -75,7 +76,7 @@ const ReminderCell = ({
       </View>
       <TextInput
         style={styles.textInput}
-        onChangeText={newText => {
+        onChangeText={(newText) => {
           const newTextNoLineBrakes = newText.replace('\n', '');
           onChangeText(item, newTextNoLineBrakes);
         }}
@@ -110,7 +111,7 @@ const Reminders = () => {
   const createEmptyReminder = () => {
     const newID = Math.random().toString(36).substring(2, 15);
     lastCreatedId.current = newID;
-    setReminders(prevReminders => [
+    setReminders((prevReminders) => [
       ...prevReminders,
       {
         id: newID,
@@ -123,7 +124,7 @@ const Reminders = () => {
   const updateTitle = useCallback(
     (id: string, title: string) => {
       const newReminders = [...reminders];
-      const elem = newReminders.find(reminder => reminder.id === id);
+      const elem = newReminders.find((reminder) => reminder.id === id);
       if (elem !== undefined) {
         elem.title = title;
       }
@@ -180,12 +181,7 @@ const Reminders = () => {
 
   return (
     <TouchableWithoutFeedback onPress={addReminder}>
-      <View
-        style={{
-          flex: 1,
-          backgroundColor: '#FFF',
-          justifyContent: 'space-between',
-        }}>
+      <View style={styles.container}>
         <FlashList
           ref={list}
           renderItem={renderItem}
@@ -218,6 +214,11 @@ const Header = () => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#FFF',
+    justifyContent: 'space-between',
+  },
   divider: {
     width: '100%',
     height: StyleSheet.hairlineWidth,

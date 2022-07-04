@@ -26,7 +26,7 @@ const List = ({navigation}: {navigation: any}) => {
 
   const removeItem = (item: number) => {
     setData(
-      data.filter(dataItem => {
+      data.filter((dataItem) => {
         return dataItem !== item;
       }),
     );
@@ -47,7 +47,8 @@ const List = ({navigation}: {navigation: any}) => {
       <Pressable
         onPress={() => {
           removeItem(item);
-        }}>
+        }}
+      >
         <View style={backgroundStyle}>
           <Text>Cell Id: {item}</Text>
         </View>

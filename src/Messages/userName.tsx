@@ -1,2 +1,2 @@
-const userName = "John";
+const userName = 'John';
 export default userName;

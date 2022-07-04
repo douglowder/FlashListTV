@@ -19,7 +19,8 @@ const TweetCell = ({tweet}: TweetCellProps) => {
     <Pressable
       onPress={() => {
         navigate('TweetDetailScreen', {tweet});
-      }}>
+      }}
+    >
       <TweetContent tweet={tweet} />
     </Pressable>
   );
