@@ -6,8 +6,10 @@ import {useTheme} from '@react-navigation/native';
 
 import {DebugContext, DebugContextInterface} from './DebugContext';
 import {getDebugItems, DebugItem, DebugOptionType} from './DebugOptions';
+import useBackNavigation from '../useBackNavigation';
 
-const DebugScreen = () => {
+const DebugScreen = ({navigation}: {navigation: any}) => {
+  useBackNavigation(navigation);
   const debugContext = useContext<DebugContextInterface>(DebugContext);
   const debugItems = getDebugItems(debugContext);
   const {colors} = useTheme();
@@ -69,7 +71,14 @@ const renderInput = (item: DebugItem) => {
 
 export default DebugScreen;
 
-const themedStyles = colors =>
+const themedStyles = (colors: {
+  primary: any;
+  background?: string;
+  card: any;
+  text?: string;
+  border: any;
+  notification?: string;
+}) =>
   StyleSheet.create({
     row: {
       flex: 1,
