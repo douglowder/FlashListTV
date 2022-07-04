@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, View, Text} from 'react-native';
+import {Pressable, StyleSheet, View, Text} from 'react-native';
 
 interface ContactSectionHeaderProps {
   title: string;
@@ -7,9 +7,13 @@ interface ContactSectionHeaderProps {
 
 const ContactSectionHeader = ({title}: ContactSectionHeaderProps) => {
   return (
-    <View style={styles.header}>
-      <Text style={styles.headerTitle}>{title}</Text>
-    </View>
+    <Pressable onPress={() => {}}>
+      {({focused}: {focused: boolean}) => (
+        <View style={focused ? styles.headerFocused : styles.header}>
+          <Text style={styles.headerTitle}>{title}</Text>
+        </View>
+      )}
+    </Pressable>
   );
 };
 
@@ -22,5 +26,8 @@ const styles = StyleSheet.create({
   },
   header: {
     backgroundColor: '#FAFAFA',
+  },
+  headerFocused: {
+    backgroundColor: '#FAFAFF',
   },
 });
