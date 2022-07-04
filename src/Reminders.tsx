@@ -1,5 +1,6 @@
 import React, {useCallback, useEffect, useRef, useState} from 'react';
 import {
+  Platform,
   View,
   Text,
   Image,
@@ -71,7 +72,12 @@ const ReminderCell = ({
       exiting={FadeOut}
     >
       <View style={styles.checkbox}>
-        <Pressable onPress={toggle}>
+        <Pressable
+          onPress={toggle}
+          style={({focused}) =>
+            focused ? styles.checkboxFocused : styles.checkbox
+          }
+        >
           <Checkbox checked={checked} />
         </Pressable>
       </View>
@@ -83,7 +89,7 @@ const ReminderCell = ({
         }}
         value={item.title}
         autoFocus
-        multiline
+        multiline={!Platform.isTV}
         numberOfLines={0}
         onKeyPress={({nativeEvent: {key: keyValue}}) => {
           if (keyValue === 'Enter') {
@@ -216,6 +222,12 @@ const Header = () => {
 };
 
 const styles = StyleSheet.create({
+  checkbox: {
+    backgroundColor: 'white',
+  },
+  checkboxFocused: {
+    backgroundColor: '#DDD',
+  },
   container: {
     flex: 1,
     backgroundColor: '#FFF',
