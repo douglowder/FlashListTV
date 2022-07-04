@@ -8,8 +8,10 @@ import TextInputBar from './TextInputBar';
 import userName from './userName';
 import MessageItem from './MessageItem';
 import Message from './models/Message';
+import useBackNavigation from '../useBackNavigation';
 
-const Messages = () => {
+const Messages = ({navigation}: {navigation: any}) => {
+  useBackNavigation(navigation);
   const [messages, setMessages] = useState(initialMessages);
 
   const appendMessage = (text: string) => {

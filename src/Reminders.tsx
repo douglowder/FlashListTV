@@ -12,6 +12,7 @@ import {
 } from 'react-native';
 import {FlashList} from '@shopify/flash-list';
 import Animated, {FadeOut, Layout} from 'react-native-reanimated';
+import useBackNavigation from './useBackNavigation';
 
 interface Reminder {
   id: string;
@@ -100,7 +101,8 @@ const ReminderCell = ({
   );
 };
 
-const Reminders = () => {
+const Reminders = ({navigation}: {navigation: any}) => {
+  useBackNavigation(navigation);
   const [reminders, setReminders] = useState<Reminder[]>([]);
 
   const lastCreatedId = useRef<string>('');

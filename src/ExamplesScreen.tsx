@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  Platform,
-  StatusBar,
-  StyleSheet,
-  FlatList,
-  Text,
-  Pressable,
-} from 'react-native';
+import {StatusBar, StyleSheet, FlatList, Text, Pressable} from 'react-native';
 import {StackNavigationProp} from '@react-navigation/stack';
 import {useNavigation, useTheme} from '@react-navigation/native';
 
@@ -18,7 +11,6 @@ import 'react-native/tvos-types.d';
 interface ExampleItem {
   title: string;
   destination: keyof RootStackParamList;
-  tv?: boolean;
 }
 
 export const ExamplesScreen = () => {
@@ -50,14 +42,13 @@ export const ExamplesScreen = () => {
   });
 
   const data: ExampleItem[] = [
-    {title: 'List', destination: 'List', tv: true},
-    {title: 'PaginatedList', destination: 'PaginatedList', tv: true},
+    {title: 'List', destination: 'List'},
+    {title: 'PaginatedList', destination: 'PaginatedList'},
     {title: 'Reminders', destination: 'Reminders'},
-    {title: 'Twitter Timeline', destination: 'Twitter', tv: true},
+    {title: 'Twitter Timeline', destination: 'Twitter'},
     {
       title: 'Twitter FlatList Timeline',
       destination: 'TwitterFlatList',
-      tv: true,
     },
     {
       title: 'Contacts',
@@ -78,12 +69,10 @@ export const ExamplesScreen = () => {
     {
       title: 'Twitter Benchmark',
       destination: 'TwitterBenchmark',
-      tv: true,
     },
     {
       title: 'Twitter Custom Cell Container',
       destination: 'TwitterCustomCellContainer',
-      tv: true,
     },
   ];
   return (
@@ -92,7 +81,7 @@ export const ExamplesScreen = () => {
       <FlatList
         testID="ExamplesFlatList"
         keyExtractor={(item: {destination: any}) => item.destination}
-        data={data.filter((item) => item.tv || !Platform.isTV)}
+        data={data}
         renderItem={(x: {item: any}) => (
           <Pressable
             style={(s: {pressed: boolean; focused: boolean}) =>

@@ -9,13 +9,15 @@ import ContactDivider from './ContactDivider';
 import ContactCell from './ContactCell';
 import contacts from './data/contacts';
 import ContactHeader from './ContactHeader';
+import useBackNavigation from '../useBackNavigation';
 
 interface Section {
   title: string;
   data: Contact[];
 }
 
-const ContactsSectionList = () => {
+const ContactsSectionList = ({navigation}: {navigation: any}) => {
+  useBackNavigation(navigation);
   const debugContext = useContext(DebugContext);
   const [data, setData] = useState<Section[]>([]);
   useEffect(() => {
