@@ -6,6 +6,7 @@ import {
   Image,
   StyleSheet,
   TextInput,
+  TouchableOpacity,
   Button,
   TouchableWithoutFeedback,
   ViewProps,
@@ -52,6 +53,8 @@ const ReminderCell = ({
     setChecked(!checked);
   };
 
+  const textInputRef = useRef<TextInput>();
+
   useEffect(() => {
     if (!checked) {
       return;
@@ -75,34 +78,68 @@ const ReminderCell = ({
         <Pressable
           onPress={toggle}
           style={({focused}) =>
-            focused ? styles.checkboxFocused : styles.checkbox
+            focused
+              ? [styles.checkbox, styles.checkboxFocused]
+              : styles.checkbox
           }
         >
           <Checkbox checked={checked} />
         </Pressable>
       </View>
-      <TextInput
-        style={styles.textInput}
-        onChangeText={(newText) => {
-          const newTextNoLineBrakes = newText.replace('\n', '');
-          onChangeText(item, newTextNoLineBrakes);
-        }}
-        value={item.title}
-        autoFocus
-        multiline={!Platform.isTV}
-        numberOfLines={0}
-        onKeyPress={({nativeEvent: {key: keyValue}}) => {
-          if (keyValue === 'Enter') {
-            onIntroPressed();
-            return false;
-          }
-        }}
-        onEndEditing={() => {
-          if (item.title.length === 0) {
-            onCompleted(item);
-          }
-        }}
-      />
+      {Platform.isTV ? (
+        <TouchableOpacity
+          onPress={() => textInputRef?.current?.focus()}
+          style={styles.container}
+        >
+          <TextInput
+            ref={textInputRef}
+            style={styles.textInput}
+            onChangeText={(newText) => {
+              const newTextNoLineBrakes = newText.replace('\n', '');
+              onChangeText(item, newTextNoLineBrakes);
+            }}
+            value={item.title}
+            autoFocus
+            multiline={!Platform.isTV}
+            numberOfLines={0}
+            onKeyPress={({nativeEvent: {key: keyValue}}) => {
+              if (keyValue === 'Enter') {
+                onIntroPressed();
+                return false;
+              }
+            }}
+            onEndEditing={() => {
+              if (item.title.length === 0) {
+                onCompleted(item);
+              }
+            }}
+          />
+        </TouchableOpacity>
+      ) : (
+        <TextInput
+          ref={textInputRef}
+          style={styles.textInput}
+          onChangeText={(newText) => {
+            const newTextNoLineBrakes = newText.replace('\n', '');
+            onChangeText(item, newTextNoLineBrakes);
+          }}
+          value={item.title}
+          autoFocus
+          multiline={!Platform.isTV}
+          numberOfLines={0}
+          onKeyPress={({nativeEvent: {key: keyValue}}) => {
+            if (keyValue === 'Enter') {
+              onIntroPressed();
+              return false;
+            }
+          }}
+          onEndEditing={() => {
+            if (item.title.length === 0) {
+              onCompleted(item);
+            }
+          }}
+        />
+      )}
     </Animated.View>
   );
 };
@@ -222,9 +259,6 @@ const Header = () => {
 };
 
 const styles = StyleSheet.create({
-  checkbox: {
-    backgroundColor: 'white',
-  },
   checkboxFocused: {
     backgroundColor: '#DDD',
   },
@@ -272,10 +306,11 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   textInput: {
-    fontSize: 17,
+    fontSize: Platform.isTV && Platform.OS === 'ios' ? 30 : 20,
     flex: 1,
     marginVertical: 6,
     marginBottom: 12,
+    minHeight: 50,
   },
 });
 
